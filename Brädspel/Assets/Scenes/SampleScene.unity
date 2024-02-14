@@ -26190,42 +26190,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 960073418337311962, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1.7634
-      objectReference: {fileID: 0}
-    - target: {fileID: 960073418337311962, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1.5341
-      objectReference: {fileID: 0}
-    - target: {fileID: 960073418337311962, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -3.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 960073418337311962, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.6313
-      objectReference: {fileID: 0}
     - target: {fileID: 3238890888985301475, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 5800447070648367545, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_fontSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800447070648367545, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_margin.w
-      value: -0.015567064
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800447070648367545, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_margin.z
-      value: 0.007771492
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800447070648367545, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6472899014507559185, guid: ce1a343b76f51e44e99029b54fe207fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
