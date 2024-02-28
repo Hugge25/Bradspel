@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -198,6 +199,11 @@ public class LevelGenerator : MonoBehaviour
                     box.GetComponentsInChildren<SpriteRenderer>()[1].transform.Rotate(0,0,-90f);
                     box.GetComponentsInChildren<SpriteRenderer>()[1].transform.localScale = new Vector3(0.15f,0.15f,1f);
                 }
+                if(tileNum == 62 || tileNum == 0)
+                {
+                    Destroy(box.GetComponentsInChildren<SpriteRenderer>()[1]);
+                }
+
                 
 
                 box.GetComponent<SpriteRenderer>().color = color;
