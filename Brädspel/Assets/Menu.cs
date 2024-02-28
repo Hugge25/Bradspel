@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    void Awake(){
+    void Start(){
         SceneManager.LoadScene(0);
     }
     public void Spela(){
