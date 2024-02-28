@@ -5,14 +5,13 @@ using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LevelGenerator : MonoBehaviour
 {
     public Texture2D map;
     public ColorToPrefab[] colorMappings;
-
-    int colorNum = 0;
     
     // Start is called before the first frame update
     void Start()
