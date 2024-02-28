@@ -7,6 +7,14 @@ TagManager:
   - Block
   - p1
   - p2
+  - Gs1
+  - Ht1
+  - Kn1
+  - Hd1
+  - Gs2
+  - Ht2
+  - Kn2
+  - Hd2
   layers:
   - Default
   - TransparentFX

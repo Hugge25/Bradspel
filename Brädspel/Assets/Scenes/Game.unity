@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 74545111}
   m_Layer: 5
   m_Name: Hund
-  m_TagString: Untagged
+  m_TagString: Hd2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4385,11 +4385,11 @@ GameObject:
   - component: {fileID: 326608373}
   m_Layer: 5
   m_Name: "H\xE4st"
-  m_TagString: Untagged
+  m_TagString: Ht2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &326608372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4460,7 +4460,7 @@ GameObject:
   - component: {fileID: 334870833}
   m_Layer: 5
   m_Name: Kanin
-  m_TagString: Untagged
+  m_TagString: Kn2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7215,11 +7215,11 @@ GameObject:
   - component: {fileID: 640611937}
   m_Layer: 0
   m_Name: Spelare2
-  m_TagString: Untagged
+  m_TagString: p2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &640611937
 Transform:
   m_ObjectHideFlags: 0
@@ -7249,11 +7249,11 @@ GameObject:
   - component: {fileID: 655968619}
   m_Layer: 5
   m_Name: Gris
-  m_TagString: Untagged
+  m_TagString: Gris
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &655968618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8114,11 +8114,11 @@ GameObject:
   - component: {fileID: 725670198}
   m_Layer: 0
   m_Name: Spelare1
-  m_TagString: Untagged
+  m_TagString: p1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &725670198
 Transform:
   m_ObjectHideFlags: 0
@@ -13469,7 +13469,7 @@ GameObject:
   - component: {fileID: 1095241610}
   m_Layer: 5
   m_Name: Kanin
-  m_TagString: Untagged
+  m_TagString: Kanin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13834,7 +13834,7 @@ GameObject:
   - component: {fileID: 1119603725}
   m_Layer: 5
   m_Name: Gris
-  m_TagString: Untagged
+  m_TagString: Gs2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17300,7 +17300,7 @@ GameObject:
   - component: {fileID: 1375873685}
   m_Layer: 5
   m_Name: "H\xE4st"
-  m_TagString: Untagged
+  m_TagString: "H\xE4st"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19104,6 +19104,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1501892982}
   - component: {fileID: 1501892981}
+  - component: {fileID: 1501892983}
+  - component: {fileID: 1501892984}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -19138,6 +19140,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1501892983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501892980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40f5a29f61186e4a8d4ba50dd32f7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1: 0
+  p2: 0
+--- !u!114 &1501892984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501892980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8db8cacd5f31ac4085e1ec1b168e30e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceSelecter: {fileID: 1501892983}
+  Gs1: {fileID: 655968617}
+  Ht1: {fileID: 1375873683}
+  Kn1: {fileID: 1095241608}
+  Hd1: {fileID: 1561283510}
+  Gs2: {fileID: 1119603723}
+  Ht2: {fileID: 326608371}
+  Kn2: {fileID: 334870831}
+  Hd2: {fileID: 74545109}
 --- !u!1 &1503191263
 GameObject:
   m_ObjectHideFlags: 0
@@ -19860,7 +19897,7 @@ GameObject:
   - component: {fileID: 1561283512}
   m_Layer: 5
   m_Name: Hund
-  m_TagString: Untagged
+  m_TagString: Hund
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
