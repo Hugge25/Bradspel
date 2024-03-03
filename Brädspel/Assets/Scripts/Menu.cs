@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    void Start()
+    {
+        //SceneManager.LoadScene(0);
+    }
     public void Spela(){
         SceneManager.LoadScene(1);
     }

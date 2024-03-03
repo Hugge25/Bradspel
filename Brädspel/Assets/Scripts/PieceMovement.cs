@@ -7,9 +7,10 @@ using UnityEngine;
 public class PieceMovement : MonoBehaviour
 {
     public PieceSelecter pieceSelecter;
+    public LevelGenerator levelGen;
 
     public GameObject Gs1;
-    public GameObject Ht1;
+    public GameObject Ht1; asdf
     public GameObject Kn1;
     public GameObject Hd1;
     public GameObject Gs2;
@@ -18,7 +19,7 @@ public class PieceMovement : MonoBehaviour
     public GameObject Hd2;
 
     public void Start(){
-
+        
     }
     public void Update()
     {
