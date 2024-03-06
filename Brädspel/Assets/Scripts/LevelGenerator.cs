@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Linq;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
@@ -12,6 +13,8 @@ public class LevelGenerator : MonoBehaviour
 {
     public Texture2D map;
     public ColorToPrefab[] colorMappings;
+
+    public static List<Transform> tiles = new List<Transform>();
     
     // Start is called before the first frame update
     void Start()
@@ -160,7 +163,6 @@ public class LevelGenerator : MonoBehaviour
                 int num = y * map.width + x;
                 GenerateTile(xPos, y, num, color); 
             }
-
          }
     }
     void GenerateTile(int x, int y,int tileNum, Color color)
@@ -182,7 +184,7 @@ public class LevelGenerator : MonoBehaviour
                 //Instantiate(colorMapping.prefab, position, Quaternion.identity, transform).GetComponentInChildren<TMP_Text>()
                 GameObject box = Instantiate(colorMapping.prefab, position, Quaternion.identity, transform); 
                 TMP_Text text = box.GetComponentInChildren<TMP_Text>();
-
+                tiles.Add(box.transform);
                 if(y % 2 == 1){
                     box.GetComponentsInChildren<SpriteRenderer>()[1].flipX = true;
 
