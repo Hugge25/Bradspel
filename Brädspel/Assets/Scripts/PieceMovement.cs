@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -16,6 +17,7 @@ enum PlayState{
 }
 public class PieceMovement : MonoBehaviour
 {
+
     public GameObject Player1, Player2;
     public GameObject prefabStar, prefabBomb;
     public int p1Pos = 0;
@@ -63,7 +65,7 @@ public class PieceMovement : MonoBehaviour
             (Player1.transform.position == LevelGenerator.tiles[40].transform.position)|| 
             (Player1.transform.position == LevelGenerator.tiles[56].transform.position)) && !isWaiting)
         {
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait(MovePlayer1)); delegate
             p1Pos = 0;
             Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
         }
@@ -73,7 +75,7 @@ public class PieceMovement : MonoBehaviour
             (Player2.transform.position == LevelGenerator.tiles[40].transform.position)|| 
             (Player2.transform.position == LevelGenerator.tiles[56].transform.position)) && !isWaiting)
         {
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             p2Pos = 0;
             Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
         }
@@ -84,7 +86,7 @@ public class PieceMovement : MonoBehaviour
             (Player1.transform.position == LevelGenerator.tiles[37].transform.position)|| 
             (Player1.transform.position == LevelGenerator.tiles[45].transform.position)) && !isWaiting)
         {
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             p1Pos += 2;
             Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position; 
         }
@@ -94,7 +96,7 @@ public class PieceMovement : MonoBehaviour
             (Player2.transform.position == LevelGenerator.tiles[37].transform.position)|| 
             (Player2.transform.position == LevelGenerator.tiles[45].transform.position)) && !isWaiting)
         {
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             p2Pos += 2;
             Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
         }
@@ -105,14 +107,14 @@ public class PieceMovement : MonoBehaviour
             tmp.text = "Spelare 1's Tur"; 
         }
         else if(playState == PlayState.Player1Moving && !isWaiting){
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             MovePlayer1();
         }
         else if(playState == PlayState.Player2WaitForMove){
             tmp.text = "Spelare 2's Tur";
         }
         else if(playState == PlayState.Player2Moving && !isWaiting){
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             MovePlayer2();
         }
 
@@ -150,10 +152,11 @@ public class PieceMovement : MonoBehaviour
             }
     }
 
-    private IEnumerator Wait()
+    private IEnumerator Wait(Action cmd)
     {
         isWaiting = true;
         yield return new WaitForSeconds(1f);
+        cmd();
         isWaiting = false;
         
     }
