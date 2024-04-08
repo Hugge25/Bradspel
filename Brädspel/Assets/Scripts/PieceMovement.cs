@@ -58,39 +58,43 @@ public class PieceMovement : MonoBehaviour
         p1Pos = Mathf.Min(p1Pos, 61);
         p2Pos = Mathf.Min(p2Pos, 61);
 
-        if((Player1.transform.position == LevelGenerator.tiles[6].transform.position) || 
+        if(((Player1.transform.position == LevelGenerator.tiles[6].transform.position) || 
             (Player1.transform.position == LevelGenerator.tiles[20].transform.position) || 
             (Player1.transform.position == LevelGenerator.tiles[40].transform.position)|| 
-            (Player1.transform.position == LevelGenerator.tiles[56].transform.position))
+            (Player1.transform.position == LevelGenerator.tiles[56].transform.position)) && !isWaiting)
         {
+            StartCoroutine(Wait());
             p1Pos = 0;
             Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
         }
 
-       if((Player2.transform.position == LevelGenerator.tiles[6].transform.position) || 
+       if(((Player2.transform.position == LevelGenerator.tiles[6].transform.position) || 
             (Player2.transform.position == LevelGenerator.tiles[20].transform.position) || 
             (Player2.transform.position == LevelGenerator.tiles[40].transform.position)|| 
-            (Player2.transform.position == LevelGenerator.tiles[56].transform.position))
+            (Player2.transform.position == LevelGenerator.tiles[56].transform.position)) && !isWaiting)
         {
+            StartCoroutine(Wait());
             p2Pos = 0;
             Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
         }
 
 
-        if((Player1.transform.position == LevelGenerator.tiles[3].transform.position) || 
+        if(((Player1.transform.position == LevelGenerator.tiles[3].transform.position) || 
             (Player1.transform.position == LevelGenerator.tiles[21].transform.position) || 
             (Player1.transform.position == LevelGenerator.tiles[37].transform.position)|| 
-            (Player1.transform.position == LevelGenerator.tiles[45].transform.position))
+            (Player1.transform.position == LevelGenerator.tiles[45].transform.position)) && !isWaiting)
         {
+            StartCoroutine(Wait());
             p1Pos += 2;
             Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position; 
         }
 
-        if((Player2.transform.position == LevelGenerator.tiles[3].transform.position) || 
+        if(((Player2.transform.position == LevelGenerator.tiles[3].transform.position) || 
             (Player2.transform.position == LevelGenerator.tiles[21].transform.position) || 
             (Player2.transform.position == LevelGenerator.tiles[37].transform.position)|| 
-            (Player2.transform.position == LevelGenerator.tiles[45].transform.position))
+            (Player2.transform.position == LevelGenerator.tiles[45].transform.position)) && !isWaiting)
         {
+            StartCoroutine(Wait());
             p2Pos += 2;
             Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
         }
@@ -101,14 +105,14 @@ public class PieceMovement : MonoBehaviour
             tmp.text = "Spelare 1's Tur"; 
         }
         else if(playState == PlayState.Player1Moving && !isWaiting){
-            StartCoroutine(Wait(1));
+            StartCoroutine(Wait());
             MovePlayer1();
         }
         else if(playState == PlayState.Player2WaitForMove){
             tmp.text = "Spelare 2's Tur";
         }
         else if(playState == PlayState.Player2Moving && !isWaiting){
-            StartCoroutine(Wait(1));
+            StartCoroutine(Wait());
             MovePlayer2();
         }
 
@@ -146,14 +150,11 @@ public class PieceMovement : MonoBehaviour
             }
     }
 
-    private IEnumerator Wait(float sec)
+    private IEnumerator Wait()
     {
-        if(!isWaiting)
-        {
-            isWaiting = true;
-            yield return new WaitForSeconds(sec);
-            isWaiting = false;
-        }
+        isWaiting = true;
+        yield return new WaitForSeconds(1f);
+        isWaiting = false;
         
     }
 }
