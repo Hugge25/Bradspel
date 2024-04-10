@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using System.Security.Cryptography;
 using JetBrains.Annotations;
 using TMPro;
@@ -17,7 +18,7 @@ enum PlayState{
 }
 public class PieceMovement : MonoBehaviour
 {
-
+    public GameObject gris, hund, kanin, hest;
     public GameObject Player1, Player2;
     public GameObject prefabStar, prefabBomb;
     public int p1Pos = 0;
@@ -25,11 +26,14 @@ public class PieceMovement : MonoBehaviour
     public bool p1Finish = false;
     public bool p2Finish = false;
     private bool isWaiting = false;
-    public TMP_Text tmp;
+    [SerializeField] PieceSelecter ps;
 
     private PlayState playState = PlayState.Player1WaitForMove;
     public void Start()
     {
+        ps = FindObjectOfType<PieceSelecter>();
+
+
         Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
         Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;
         playState = PlayState.Player1WaitForMove;
@@ -101,17 +105,25 @@ public class PieceMovement : MonoBehaviour
             Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
         }
 
+        if(Player1.transform.position == LevelGenerator.tiles[0].transform.position)
+        {
+            Player1.transform.position -= new Vector3(2.5f, 0, 0); 
+        }
+        else if(Player2.transform.position == LevelGenerator.tiles[0].transform.position)
+        {
+            Player2.transform.position += new Vector3(2.5f, 0, 0);
+        }
 
 
         if(playState == PlayState.Player1WaitForMove){
-            tmp.text = "Spelare 1's Tur"; 
+            p1Turn();
         }
         else if(playState == PlayState.Player1Moving && !isWaiting){
             //StartCoroutine(Wait());
             MovePlayer1();
         }
         else if(playState == PlayState.Player2WaitForMove){
-            tmp.text = "Spelare 2's Tur";
+            p2Turn();
         }
         else if(playState == PlayState.Player2Moving && !isWaiting){
             //StartCoroutine(Wait());
@@ -127,6 +139,43 @@ public class PieceMovement : MonoBehaviour
         }
     }
 
+    void p1Turn()
+    {
+        if(ps.p1 == 1){
+            gris.SetActive(true);}
+        else{gris.SetActive(false);}
+
+        if(ps.p1 == 2){
+            hest.SetActive(true);}
+        else{hest.SetActive(false);}
+
+        if(ps.p1 == 3){
+            kanin.SetActive(true);}
+        else{kanin.SetActive(false);}
+
+        if(ps.p1 == 4){
+            hund.SetActive(true);}
+        else{hund.SetActive(false);}
+    }
+
+    void p2Turn()
+    {
+        if(ps.p2 == 1){
+            gris.SetActive(true);}
+        else{gris.SetActive(false);}
+
+        if(ps.p2 == 2){
+            hest.SetActive(true);}
+        else{hest.SetActive(false);}
+
+        if(ps.p2 == 3){
+            kanin.SetActive(true);}
+        else{kanin.SetActive(false);}
+
+        if(ps.p2 == 4){
+            hund.SetActive(true);}
+        else{hund.SetActive(false);}
+    }
     void MovePlayer1(){
         p1Pos += DiceRandom.diceNum;
         int moves = math.min(p1Pos,LevelGenerator.tiles.Count-1);
