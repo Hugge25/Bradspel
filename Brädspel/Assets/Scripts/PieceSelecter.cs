@@ -66,6 +66,16 @@ public class PieceSelecter : MonoBehaviour
 
     public void Update()
     {
+        if(p1 == p2)
+        {
+            if(p2 == 4)
+            {
+                p2 = 1;
+            }
+            else
+                p2 += 1;
+        }
+
         if(p1 == 1)
         {
             Gs1.SetActive(true);
@@ -73,7 +83,7 @@ public class PieceSelecter : MonoBehaviour
         else if(p1 == 2){
             Ht1.SetActive(true);
         } 
-        else if(p1 == 3){
+        else if(p2 == 3){
             Kn1.SetActive(true);
         }  
         else{
@@ -92,6 +102,6 @@ public class PieceSelecter : MonoBehaviour
         }  
         else{
             Hd2.SetActive(true);
-        }
+        }  
     }
 }
