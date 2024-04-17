@@ -110,12 +110,9 @@ public class PieceMovement : MonoBehaviour
              
         }
 
-        if(Player1.transform.position == LevelGenerator.tiles[0].transform.position)
+        if(Player1.transform.position == Player2.transform.position)
         {
             Player1.transform.position -= new Vector3(2.5f, 0, 0); 
-        }
-        else if(Player2.transform.position == LevelGenerator.tiles[0].transform.position)
-        {
             Player2.transform.position += new Vector3(2.5f, 0, 0);
         }
 
@@ -184,6 +181,9 @@ public class PieceMovement : MonoBehaviour
         int moves = math.min(p1Pos,LevelGenerator.tiles.Count-1);
         Player1.transform.position = LevelGenerator.tiles[moves].transform.position;    
         playState = PlayState.Player2WaitForMove;
+        StartCoroutine(Wait(() => {
+                print("Moved");
+            }, 2f));
     }
 
     void MovePlayer2(){
@@ -194,14 +194,14 @@ public class PieceMovement : MonoBehaviour
     }
 
     public void SwitchState(){
-            if(playState == PlayState.Player1WaitForMove && !p1Finish){
-                playState = PlayState.Player1Moving;
-                print("Switch to p1");
-            }
-            if(playState == PlayState.Player2WaitForMove && !p2Finish){
-                playState = PlayState.Player2Moving;
-                print("Switch to p2");
-            }
+        if(playState == PlayState.Player1WaitForMove && !p1Finish){
+        playState = PlayState.Player1Moving;
+        print("Switch to p1");
+        }
+        if(playState == PlayState.Player2WaitForMove && !p2Finish){
+            playState = PlayState.Player2Moving;
+            print("Switch to p2");
+        }
     }
 
     public IEnumerator Wait(Action cmd, float time)

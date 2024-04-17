@@ -13,14 +13,20 @@ public class DiceRandom : MonoBehaviour
     public void Start()
     {
         pm = FindObjectOfType<PieceMovement>();
+        six.SetActive(true);
     }
 
     public void Update()
-    {
+    { 
         if(pm.playState == PlayState.Player1WaitForMove || pm.playState == PlayState.Player2WaitForMove)
-        {
-            dice.SetActive(true);
-        }  
+        { 
+            Invoke("DiceActive", 2f);
+        }      
+    }
+
+    void DiceActive()
+    {
+        dice.SetActive(true);
     }
     public void Roll()
     {
