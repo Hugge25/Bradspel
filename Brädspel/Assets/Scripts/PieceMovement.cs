@@ -10,7 +10,7 @@ using UnityEditor;
 using UnityEditor.Tilemaps;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
-enum PlayState{
+public enum PlayState{
     Player1WaitForMove,
     Player1Moving,
     Player2WaitForMove,
@@ -28,7 +28,7 @@ public class PieceMovement : MonoBehaviour
     private bool isWaiting = false;
     [SerializeField] PieceSelecter ps;
 
-    private PlayState playState = PlayState.Player1WaitForMove;
+    public PlayState playState = PlayState.Player1WaitForMove;
     public void Start()
     {
         ps = FindObjectOfType<PieceSelecter>();
@@ -69,9 +69,10 @@ public class PieceMovement : MonoBehaviour
             (Player1.transform.position == LevelGenerator.tiles[40].transform.position)|| 
             (Player1.transform.position == LevelGenerator.tiles[56].transform.position)) && !isWaiting)
         {
-            //StartCoroutine(Wait(MovePlayer1)); delegate
             p1Pos = 0;
-            Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
+            StartCoroutine(Wait(() => {
+                Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
+            }, 1f));
         }
 
        if(((Player2.transform.position == LevelGenerator.tiles[6].transform.position) || 
@@ -79,9 +80,10 @@ public class PieceMovement : MonoBehaviour
             (Player2.transform.position == LevelGenerator.tiles[40].transform.position)|| 
             (Player2.transform.position == LevelGenerator.tiles[56].transform.position)) && !isWaiting)
         {
-            //StartCoroutine(Wait());
             p2Pos = 0;
-            Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
+            StartCoroutine(Wait(() => {
+                Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;
+            }, 1f));
         }
 
 
@@ -90,9 +92,10 @@ public class PieceMovement : MonoBehaviour
             (Player1.transform.position == LevelGenerator.tiles[37].transform.position)|| 
             (Player1.transform.position == LevelGenerator.tiles[45].transform.position)) && !isWaiting)
         {
-            //StartCoroutine(Wait());
             p1Pos += 2;
-            Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position; 
+            StartCoroutine(Wait(() => {
+                Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position; 
+            }, 1f));
         }
 
         if(((Player2.transform.position == LevelGenerator.tiles[3].transform.position) || 
@@ -100,9 +103,11 @@ public class PieceMovement : MonoBehaviour
             (Player2.transform.position == LevelGenerator.tiles[37].transform.position)|| 
             (Player2.transform.position == LevelGenerator.tiles[45].transform.position)) && !isWaiting)
         {
-            //StartCoroutine(Wait());
             p2Pos += 2;
-            Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position; 
+            StartCoroutine(Wait(() => {
+                Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;
+            }, 1f));
+             
         }
 
         if(Player1.transform.position == LevelGenerator.tiles[0].transform.position)
@@ -119,15 +124,13 @@ public class PieceMovement : MonoBehaviour
             p1Turn();
         }
         else if(playState == PlayState.Player1Moving && !isWaiting){
-            //StartCoroutine(Wait());
-            MovePlayer1();
+            StartCoroutine(Wait(MovePlayer1, 4f));
         }
         else if(playState == PlayState.Player2WaitForMove){
             p2Turn();
         }
         else if(playState == PlayState.Player2Moving && !isWaiting){
-            //StartCoroutine(Wait());
-            MovePlayer2();
+            StartCoroutine(Wait(MovePlayer2, 4f));
         }
 
         if(p1Pos == 62){
@@ -201,10 +204,10 @@ public class PieceMovement : MonoBehaviour
             }
     }
 
-    private IEnumerator Wait(Action cmd)
+    public IEnumerator Wait(Action cmd, float time)
     {
         isWaiting = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
         cmd();
         isWaiting = false;
         
