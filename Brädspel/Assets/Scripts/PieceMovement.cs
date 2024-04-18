@@ -10,6 +10,7 @@ using UnityEditor;
 using UnityEditor.Tilemaps;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public enum PlayState{
     Player1WaitForMove,
     Player1Moving,
@@ -21,18 +22,19 @@ public class PieceMovement : MonoBehaviour
     public GameObject gris, hund, kanin, hest;
     public GameObject Player1, Player2;
     public GameObject prefabStar, prefabBomb;
+    public GameObject pauseButton, menyButton;
     public int p1Pos = 0;
     public int p2Pos = 0;
     public bool p1Finish = false;
     public bool p2Finish = false;
     private bool isWaiting = false;
+    public bool paused = false;
     [SerializeField] PieceSelecter ps;
 
     public PlayState playState = PlayState.Player1WaitForMove;
     public void Start()
     {
         ps = FindObjectOfType<PieceSelecter>();
-
 
         Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
         Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;
@@ -120,22 +122,32 @@ public class PieceMovement : MonoBehaviour
         if(playState == PlayState.Player1WaitForMove){
             p1Turn();
         }
-        else if(playState == PlayState.Player1Moving && !isWaiting){
+        else if(playState == PlayState.Player1Moving && !isWaiting && !paused){
             StartCoroutine(Wait(MovePlayer1, 4f));
         }
         else if(playState == PlayState.Player2WaitForMove){
             p2Turn();
         }
-        else if(playState == PlayState.Player2Moving && !isWaiting){
+        else if(playState == PlayState.Player2Moving && !isWaiting && !paused){
             StartCoroutine(Wait(MovePlayer2, 4f));
         }
 
         if(p1Pos == 62){
             p1Finish = true; 
+
         }
 
         if(p2Pos == 62){
             p2Finish = true;
+        }
+
+        if(p1Finish)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if(p2Finish)
+        {
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -202,6 +214,27 @@ public class PieceMovement : MonoBehaviour
             playState = PlayState.Player2Moving;
             print("Switch to p2");
         }
+    }
+
+    public void Pause()
+    {
+        if(paused){
+            paused = false;
+            pauseButton.transform.position = new Vector3(-48.8f, 23.8f, -8.53f);
+            pauseButton.transform.localScale = new Vector3(1, 1, 1);
+            menyButton.SetActive(false);
+        }
+        else if(!paused){
+            paused = true;
+            pauseButton.transform.position = new Vector3(0, 0, -8.53f);
+            pauseButton.transform.localScale = new Vector3(5, 5, 1);
+            menyButton.SetActive(true);
+        }
+    }
+
+    public void Meny()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public IEnumerator Wait(Action cmd, float time)

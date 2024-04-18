@@ -13,12 +13,14 @@ public class DiceRandom : MonoBehaviour
     public void Start()
     {
         pm = FindObjectOfType<PieceMovement>();
-        six.SetActive(true);
+        if(!pm.paused){
+            six.SetActive(true);   
+        }
     }
 
     public void Update()
     { 
-        if(pm.playState == PlayState.Player1WaitForMove || pm.playState == PlayState.Player2WaitForMove)
+        if((pm.playState == PlayState.Player1WaitForMove || pm.playState == PlayState.Player2WaitForMove) && !pm.paused)
         { 
             Invoke("DiceActive", 2f);
         }      
@@ -26,7 +28,15 @@ public class DiceRandom : MonoBehaviour
 
     void DiceActive()
     {
-        dice.SetActive(true);
+        if(!pm.paused)
+        {
+            dice.SetActive(true);
+        }
+        else if(pm.paused)
+        {
+            dice.SetActive(false);
+        }
+        
     }
     public void Roll()
     {
