@@ -10,6 +10,7 @@ using UnityEditor;
 using UnityEditor.Tilemaps;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 public enum PlayState{
     Player1WaitForMove,
@@ -29,6 +30,7 @@ public class PieceMovement : MonoBehaviour
     public bool p2Finish = false;
     private bool isWaiting = false;
     public bool paused = false;
+    //public bool start = true;
     [SerializeField] PieceSelecter ps;
 
     public PlayState playState = PlayState.Player1WaitForMove;
@@ -58,11 +60,15 @@ public class PieceMovement : MonoBehaviour
         star2.transform.position += Vector3.back;
         star3.transform.position += Vector3.back;
         star4.transform.position += Vector3.back;
-        
     }   
 
     public void Update()
     {
+        /*if(start)
+        {
+            StarterPack();
+        }*/
+        
         p1Pos = Mathf.Min(p1Pos, 61);
         p2Pos = Mathf.Min(p2Pos, 61);
 
@@ -230,6 +236,31 @@ public class PieceMovement : MonoBehaviour
             pauseButton.transform.localScale = new Vector3(5, 5, 1);
             menyButton.SetActive(true);
         }
+    }
+    public void StarterPack()
+    {
+        Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
+        Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;
+        playState = PlayState.Player1WaitForMove;
+
+        GameObject bomb1 = Instantiate(prefabBomb, LevelGenerator.tiles[6].transform.position, Quaternion.identity, transform);
+        GameObject bomb2 = Instantiate(prefabBomb, LevelGenerator.tiles[20].transform.position, Quaternion.identity, transform);
+        GameObject bomb3 = Instantiate(prefabBomb, LevelGenerator.tiles[40].transform.position, Quaternion.identity, transform);
+        GameObject bomb4 = Instantiate(prefabBomb, LevelGenerator.tiles[56].transform.position, Quaternion.identity, transform);
+
+        GameObject star1 = Instantiate(prefabStar, LevelGenerator.tiles[3].transform.position, Quaternion.identity, transform);
+        GameObject star2 = Instantiate(prefabStar, LevelGenerator.tiles[21].transform.position, Quaternion.identity, transform);
+        GameObject star3 = Instantiate(prefabStar, LevelGenerator.tiles[37].transform.position, Quaternion.identity, transform);
+        GameObject star4 = Instantiate(prefabStar, LevelGenerator.tiles[45].transform.position, Quaternion.identity, transform);
+
+        bomb1.transform.position += Vector3.back;
+        bomb2.transform.position += Vector3.back;
+        bomb3.transform.position += Vector3.back;
+        bomb4.transform.position += Vector3.back;
+        star1.transform.position += Vector3.back;
+        star2.transform.position += Vector3.back;
+        star3.transform.position += Vector3.back;
+        star4.transform.position += Vector3.back;
     }
 
     public void Meny()

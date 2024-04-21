@@ -83,7 +83,7 @@ public class PieceSelecter : MonoBehaviour
         else if(p1 == 2){
             Ht1.SetActive(true);
         } 
-        else if(p2 == 3){
+        else if(p1 == 3){
             Kn1.SetActive(true);
         }  
         else{
