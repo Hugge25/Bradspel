@@ -137,5 +137,6 @@ public class PieceSelecter : MonoBehaviour
         if(p2 == 4){
             SB5.SetActive(true);}
         else{SB5.SetActive(false);}
+
     }
 }

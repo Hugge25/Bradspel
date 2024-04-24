@@ -30,7 +30,6 @@ public class PieceMovement : MonoBehaviour
     public bool p2Finish = false;
     private bool isWaiting = false;
     public bool paused = false;
-    //public bool start = true;
     [SerializeField] PieceSelecter ps;
 
     public PlayState playState = PlayState.Player1WaitForMove;

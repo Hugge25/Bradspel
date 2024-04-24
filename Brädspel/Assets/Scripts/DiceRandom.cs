@@ -14,6 +14,7 @@ public class DiceRandom : MonoBehaviour
     public void Start()
     {
         pm = FindObjectOfType<PieceMovement>();
+
         if(!pm.paused){
             six.SetActive(true);   
         }
