@@ -9,6 +9,7 @@ public class DiceRandom : MonoBehaviour
 {
     public GameObject one, two, three, four, five, six, dice;
     public static int diceNum;
+    private bool isRolling = false;
     [SerializeField] PieceMovement pm;
     public void Start()
     {
@@ -22,6 +23,7 @@ public class DiceRandom : MonoBehaviour
     { 
         if((pm.playState == PlayState.Player1WaitForMove || pm.playState == PlayState.Player2WaitForMove) && !pm.paused)
         { 
+            isRolling = true;
             Invoke("DiceActive", 2f);
         }      
     }
@@ -40,11 +42,15 @@ public class DiceRandom : MonoBehaviour
     }
     public void Roll()
     {
-        diceNum = Random.Range(1, 7);
+        if(isRolling)
+        {
+            isRolling = false;
+            diceNum = Random.Range(1, 7);
 
-        StartCoroutine(Rolling(0.1f));
+            StartCoroutine(Rolling(0.1f));
 
-        StartCoroutine(Hide(3f));
+            StartCoroutine(Hide(3f));
+        }
     }
     private IEnumerator Hide(float time)
     {
