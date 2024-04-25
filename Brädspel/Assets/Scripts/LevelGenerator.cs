@@ -13,12 +13,14 @@ public class LevelGenerator : MonoBehaviour
 {
     public Texture2D map;
     public ColorToPrefab[] colorMappings;
+    public static int generateCounter = 0;
 
     public static List<Transform> tiles = new List<Transform>();
     
     // Start is called before the first frame update
     void Start()
     {
+        generateCounter++;
         GenerateLevel1();
 
         if(tag == "Block")

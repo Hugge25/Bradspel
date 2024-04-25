@@ -30,16 +30,23 @@ public class PieceMovement : MonoBehaviour
     public bool p2Finish = false;
     private bool isWaiting = false;
     public bool paused = false;
+    public static int startCounter = 0;
     [SerializeField] PieceSelecter ps;
 
     public PlayState playState = PlayState.Player1WaitForMove;
     public void Start()
     {
-        ps = FindObjectOfType<PieceSelecter>();
+        startCounter++;
+        Debug.Log("Start " + Time.deltaTime + "Start Counter " + startCounter);
+        ps = GetComponent<PieceSelecter>();
+        Debug.Log("Done1");
+        
+        Debug.Log("Ternary test" + ((LevelGenerator.tiles[p1Pos].transform == null) ? 1 : 2));
 
         Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
         Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;
         playState = PlayState.Player1WaitForMove;
+        Debug.Log("Done2");
 
         GameObject bomb1 = Instantiate(prefabBomb, LevelGenerator.tiles[6].transform.position, Quaternion.identity, transform);
         GameObject bomb2 = Instantiate(prefabBomb, LevelGenerator.tiles[20].transform.position, Quaternion.identity, transform);
@@ -51,6 +58,8 @@ public class PieceMovement : MonoBehaviour
         GameObject star3 = Instantiate(prefabStar, LevelGenerator.tiles[37].transform.position, Quaternion.identity, transform);
         GameObject star4 = Instantiate(prefabStar, LevelGenerator.tiles[45].transform.position, Quaternion.identity, transform);
 
+        Debug.Log("Done3");
+
         bomb1.transform.position += Vector3.back;
         bomb2.transform.position += Vector3.back;
         bomb3.transform.position += Vector3.back;
@@ -59,6 +68,8 @@ public class PieceMovement : MonoBehaviour
         star2.transform.position += Vector3.back;
         star3.transform.position += Vector3.back;
         star4.transform.position += Vector3.back;
+
+        Debug.Log("Done4");
     }   
 
     public void Update()

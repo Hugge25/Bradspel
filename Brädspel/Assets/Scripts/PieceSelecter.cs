@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class PieceSelecter : MonoBehaviour
     }
 
     public void GrisP1(){
+        Debug.Log("p1, 1");
         p1 = 1;
     }
     public void GrisP2(){
@@ -68,33 +70,46 @@ public class PieceSelecter : MonoBehaviour
 
     public void Update()
     {
-        if(p1 == 1)
+        switch (p1)
         {
-            Gs1.SetActive(true);
+            case 1:
+                if (Gs1 != null)
+                    Gs1.SetActive(true);
+                break;
+            case 2:
+                if (Ht1 != null)
+                    Ht1.SetActive(true);
+                break;
+            case 3:
+                if (Kn1 != null)
+                    Kn1.SetActive(true);
+                break;
+            default:
+                if (Hd1 != null)
+                    Hd1.SetActive(true);
+                break;
         }
-        else if(p1 == 2){
-            Ht1.SetActive(true);
-        } 
-        else if(p1 == 3){
-            Kn1.SetActive(true);
-        }  
-        else{
-            Hd1.SetActive(true);
-        } 
 
-        if(p2 == 1)
+        switch (p2)
         {
-            Gs2.SetActive(true);
+            case 1:
+                if (Gs2 != null)
+                    Gs2.SetActive(true);
+                break;
+            case 2:
+                if (Ht2 != null)
+                    Ht2.SetActive(true);
+                break;
+            case 3:
+                if (Kn2 != null)
+                    Kn2.SetActive(true);
+                break;
+            default:
+                if (Hd2 != null)
+                    Hd2.SetActive(true);
+                break;
         }
-        else if(p2 == 2){
-            Ht2.SetActive(true);
-        }
-        else if(p2 == 3){
-            Kn2.SetActive(true);
-        }  
-        else{
-            Hd2.SetActive(true);
-        }  
+
 
         if(p1 == p2)
         {
@@ -107,7 +122,9 @@ public class PieceSelecter : MonoBehaviour
         }
 
         if(p1 == 1){
-            SB4.SetActive(true);}
+            Debug.Log("active" + SB4);
+            SB4.SetActive(true);
+        }
         else{SB4.SetActive(false);}
 
         if(p1 == 2){
