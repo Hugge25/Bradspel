@@ -1,16 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO.Compression;
-using System.Security.Cryptography;
-using JetBrains.Annotations;
-using TMPro;
 using Unity.Mathematics;
-using UnityEditor;
-using UnityEditor.Tilemaps;
-using UnityEditor.U2D.Aseprite;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 public enum PlayState{
     Player1WaitForMove,
@@ -71,7 +63,6 @@ public class PieceMovement : MonoBehaviour
 
         Debug.Log("Done4");
     }   
-
     public void Update()
     {
         p1Pos = Mathf.Min(p1Pos, 61);
