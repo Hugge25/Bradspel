@@ -23,17 +23,17 @@ public class PieceMovement : MonoBehaviour
     private bool isWaiting = false;
     public bool paused = false;
     public static int startCounter = 0;
-    [SerializeField] PieceSelecter ps;
+    public PieceSelecter ps;
 
     public PlayState playState = PlayState.Player1WaitForMove;
     public void Start()
     {
         startCounter++;
         Debug.Log("Start " + Time.deltaTime + "Start Counter " + startCounter);
-        ps = GetComponent<PieceSelecter>();
+        //ps = GetComponent<PieceSelecter>();
         Debug.Log("Done1");
         
-        Debug.Log("Ternary test" + ((LevelGenerator.tiles[p1Pos].transform == null) ? 1 : 2));
+        Debug.Log("Ternary test " + ((LevelGenerator.tiles[p1Pos].transform == null) ? 1 : 2));
 
         Player1.transform.position = LevelGenerator.tiles[p1Pos].transform.position;
         Player2.transform.position = LevelGenerator.tiles[p2Pos].transform.position;

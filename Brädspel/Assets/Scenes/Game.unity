@@ -20315,7 +20315,7 @@ MonoBehaviour:
   p1Finish: 0
   p2Finish: 0
   paused: 0
-  ps: {fileID: 0}
+  ps: {fileID: 1501892983}
   playState: 0
 --- !u!1 &1503191263
 GameObject:
