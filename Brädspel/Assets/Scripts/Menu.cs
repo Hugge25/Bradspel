@@ -11,4 +11,9 @@ public class Menu : MonoBehaviour
         Debug.Log("Avsluta");
         Application.Quit();
     }
+
+    public void Meny()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

@@ -65,8 +65,8 @@ public class PieceMovement : MonoBehaviour
     }   
     public void Update()
     {
-        p1Pos = Mathf.Min(p1Pos, 61);
-        p2Pos = Mathf.Min(p2Pos, 61);
+        p1Pos = Mathf.Min(p1Pos, 62);
+        p2Pos = Mathf.Min(p2Pos, 62);
 
         if(((Player1.transform.position == LevelGenerator.tiles[6].transform.position) || 
             (Player1.transform.position == LevelGenerator.tiles[20].transform.position) || 
@@ -134,11 +134,11 @@ public class PieceMovement : MonoBehaviour
             StartCoroutine(Wait(MovePlayer2, 4f));
         }
 
-        if(Player1.transform.position == new Vector3(43, 16)){
+        if(p1Pos == 62){
             p1Finish = true; 
         }
 
-        if(Player1.transform.position == new Vector3(43, 16)){
+        if(p2Pos == 62){
             p2Finish = true;
         }
 
