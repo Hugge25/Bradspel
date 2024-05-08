@@ -28,8 +28,10 @@ public class PieceMovement : MonoBehaviour
     public PlayState playState = PlayState.Player1WaitForMove;
     public void Start()
     {
+        Debug.Log("Start");
         startCounter++;
         Debug.Log("Start " + Time.deltaTime + "Start Counter " + startCounter);
+        Debug.Log("Done0.5");
         ps = GetComponent<PieceSelecter>();
         Debug.Log("Done1");
         

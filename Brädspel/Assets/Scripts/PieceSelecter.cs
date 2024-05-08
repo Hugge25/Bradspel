@@ -116,11 +116,9 @@ public class PieceSelecter : MonoBehaviour
             else
                 p2 += 1;
         }
-
+        
         if(p1 == 1){
-            Debug.Log("active" + SB4);
-            SB4.SetActive(true);
-        }
+            SB4.SetActive(true);}
         else{SB4.SetActive(false);}
 
         if(p1 == 2){
@@ -150,6 +148,5 @@ public class PieceSelecter : MonoBehaviour
         if(p2 == 4){
             SB5.SetActive(true);}
         else{SB5.SetActive(false);}
-
     }
 }
